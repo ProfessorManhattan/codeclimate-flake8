@@ -1,0 +1,39 @@
+#!/usr/bin/env python
+
+import glob
+import json
+import os.path
+import sys
+
+from flake8.main import application
+from flake8.options.config import LocalPlugins
+
+CONFIG_FILE_LOCATION = "/config.json"
+
+if os.path.exists(CONFIG_FILE_LOCATION):
+    contents = open(CONFIG_FILE_LOCATION).read()
+    config = json.loads(contents)
+else:
+    config = {}
+
+include_paths = config.get('include_paths', ['./'])
+exclude_paths = config.get('exclude_paths', [])
+
+additional_python_path = config.get('PYTHONPATH', [])
+if isinstance(additional_python_path, str):
+    additional_python_path = [additional_python_path]
+if additional_python_path:
+    sys.path.extend(map(lambda x: os.path.abspath(x), additional_python_path))
+
+include_paths = config.get('include_paths', ['./'])
+parameters = []
+for path in include_paths:
+    if os.path.isdir(path):
+        parameters += glob.glob(path + "*/**/*.py", recursive=True)
+    elif path.endswith('.py'):
+        parameters.append(path)
+
+app = application.Application()
+app.local_plugins = LocalPlugins(extension=[], report=['codeclimate = reporter:JSONFormatter'], paths=[])
+app.run(['--format=codeclimate'])
+app.exit()

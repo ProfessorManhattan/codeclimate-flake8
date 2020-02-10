@@ -1,0 +1,11 @@
+{
+  "name": "flake8",
+  "description": "Flake8: Your Tool For Style Guide Enforcement in Python programming language.",
+  "maintainer": {
+    "name": "Jorge Klemm",
+    "email": "jorge@mercos.com"
+  },
+  "languages" : ["Python"],
+  "version": "0.1",
+  "spec_version": "0.3.1"
+}
