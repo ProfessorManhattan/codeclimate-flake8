@@ -7,6 +7,7 @@ Flake8 plugin for Code Climate JSON format reporting::
 
 import hashlib
 import json
+import sys
 
 from flake8.formatting import base
 from pkg_resources import DistributionNotFound, get_distribution
@@ -58,6 +59,10 @@ def error_category(error):
 class JSONFormatter(base.BaseFormatter):
     """Formatter for Code Climate JSON reporting"""
 
+    def __init__(self, args):
+        super(JSONFormatter, self).__init__(args)
+        self.newline = "\n\0"
+
     def create_fingerprint(self, error):
         value = ":".join(str(val) for val in error)
         return hashlib.sha256(value.encode("utf-8")).hexdigest()
@@ -93,3 +98,6 @@ class JSONFormatter(base.BaseFormatter):
             "remediation_points": None,
             # "severity": Severity,  # TODO map severity
         })
+
+    def write(self, line, source):
+        print(line, end=self.newline)  # , file=sys.stdout)

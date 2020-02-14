@@ -26,14 +26,15 @@ if additional_python_path:
     sys.path.extend(map(lambda x: os.path.abspath(x), additional_python_path))
 
 include_paths = config.get('include_paths', ['./'])
-parameters = []
+parameters = ['--format=codeclimate']
 for path in include_paths:
     if os.path.isdir(path):
-        parameters += glob.glob(path + "*/**/*.py", recursive=True)
+        parameters += glob.glob(path + "*.py", recursive=True)
     elif path.endswith('.py'):
         parameters.append(path)
 
 app = application.Application()
-app.local_plugins = LocalPlugins(extension=[], report=['codeclimate = reporter:JSONFormatter'], paths=[])
-app.run(['--format=codeclimate'])
+app.local_plugins = LocalPlugins(extension=[], report=['codeclimate = reporter:JSONFormatter'], paths=['.'])
+app.run(parameters)
 app.exit()
+exit(0)
