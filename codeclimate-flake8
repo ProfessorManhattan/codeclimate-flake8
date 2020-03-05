@@ -36,5 +36,3 @@ for path in include_paths:
 app = application.Application()
 app.local_plugins = LocalPlugins(extension=[], report=['codeclimate = reporter:JSONFormatter'], paths=['.'])
 app.run(parameters)
-app.exit()
-exit(0)
