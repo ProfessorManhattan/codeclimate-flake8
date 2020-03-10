@@ -16,9 +16,6 @@ if os.path.exists(CONFIG_FILE_LOCATION):
 else:
     config = {}
 
-include_paths = config.get('include_paths', ['./'])
-exclude_paths = config.get('exclude_paths', [])
-
 additional_python_path = config.get('PYTHONPATH', [])
 if isinstance(additional_python_path, str):
     additional_python_path = [additional_python_path]
