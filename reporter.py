@@ -7,7 +7,6 @@ Flake8 plugin for Code Climate JSON format reporting::
 
 import hashlib
 import json
-import sys
 
 from flake8.formatting import base
 from pkg_resources import DistributionNotFound, get_distribution
