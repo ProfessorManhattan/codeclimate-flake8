@@ -99,4 +99,4 @@ class JSONFormatter(base.BaseFormatter):
         })
 
     def write(self, line, source):
-        print(line, end=self.newline)  # , file=sys.stdout)
+        print(line, end=self.newline)
