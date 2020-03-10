@@ -7,7 +7,6 @@ Flake8 plugin for Code Climate JSON format reporting::
 
 import hashlib
 import json
-import sys
 
 from flake8.formatting import base
 from pkg_resources import DistributionNotFound, get_distribution
@@ -100,4 +99,4 @@ class JSONFormatter(base.BaseFormatter):
         })
 
     def write(self, line, source):
-        print(line, end=self.newline)  # , file=sys.stdout)
+        print(line, end=self.newline)
