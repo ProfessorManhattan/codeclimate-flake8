@@ -68,35 +68,42 @@ class JSONFormatter(base.BaseFormatter):
 
     def format(self, error):
         return json.dumps({
-            "type": "issue",
-            "check_name": error.code,  # TODO map codes to names
-            "description": error.text,
-            "fingerprint": self.create_fingerprint(error),
-            "content": {
-                "body": "`{}`".format(error.physical_line),
+            'type': 'issue',
+            'check_name': error.code,  # TODO map codes to names
+            'description': self._parse_message(error.text),
+            'fingerprint': self.create_fingerprint(error),
+            'content': {
+                "body": '`{}`'.format(error.physical_line),
             },
-            "categories": [error_category(error)],
-            "location": {
-                "path": error.filename,
-                "lines": {
-                    "begin": error.line_number,
-                    "end": error.line_number,
+            'categories': [error_category(error)],
+            'location': {
+                'path': error.filename,
+                'lines': {
+                    'begin': error.line_number,
+                    'end': error.line_number,
                 },
-                "positions": {
-                    "begin": {
-                        "line": error.line_number,
-                        "column": error.column_number,
+                'positions': {
+                    'begin': {
+                        'line': error.line_number,
+                        'column': error.column_number,
                     },
-                    "end": {
-                        "line": error.line_number,
-                        "column": error.column_number,
+                    'end': {
+                        'line': error.line_number,
+                        'column': error.column_number,
                     },
                 },
 
             },
-            "remediation_points": None,
-            # "severity": Severity,  # TODO map severity
+            'remediation_points': None,
+            # 'severity': Severity,  # TODO map severity
         })
+
+    def _parse_message(self, message):
+        while '  ' in message:
+            message = message.replace('  ', ' ')
+        message = message.replace('"', '`')
+        message = message.replace('\\', '')
+        return message
 
     def write(self, line, source):
         print(line, end=self.newline)
