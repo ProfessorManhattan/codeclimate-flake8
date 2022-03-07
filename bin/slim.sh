@@ -1,0 +1,1 @@
+docker-slim build --tag codeclimate/codeclimate-flake8:slim --http-probe=false --exec 'flake8 . || continue' --mount "$PWD/tests/example:/work" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8' codeclimate/codeclimate-flake8:latest && prettier --write slim.report.json 
