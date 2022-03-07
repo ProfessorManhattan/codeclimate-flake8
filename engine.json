@@ -2,8 +2,8 @@
   "name": "flake8",
   "description": "Flake8: Your Tool For Style Guide Enforcement in Python programming language.",
   "maintainer": {
-    "name": "Jorge Klemm",
-    "email": "jorge@mercos.com"
+    "name": "Brian Zalewski",
+    "email": "brian@megabyte.space"
   },
   "languages" : ["Python"],
   "version": "0.1",
