@@ -96,7 +96,10 @@
     "slug": "flake8",
     "subgroup": "codeclimate",
     "title": "Flake8 CodeClimate Engine",
-    "versionCommand": "docker run -it megabytelabs/flake8:latest --version | sed 's/ .*$//' | head -n 1"
+    "versionCommand": "docker run -it megabytelabs/flake8:latest --version | sed 's/ .*$//' | head -n 1",
+    "github_id": "R_kgDOHCeF7g",
+    "gitlab_project_id": "32219697",
+    "gitlab_group_id": "14556970"
   },
   "changelog": {
     "displayTypes": [
