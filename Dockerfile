@@ -1,23 +1,27 @@
-FROM python:3.6.9-alpine
+FROM python:alpine AS codeclimate
 
+WORKDIR /work
 
-RUN apk add build-base
+COPY local/codeclimate-flake8 local/reporter.py /usr/local/bin/
+COPY local/engine.json ./engine.json
 
-WORKDIR /usr/src/app
-COPY requirements.txt /usr/src/app/
-
-RUN pip install -r requirements.txt
-
-RUN adduser -u 9000 -D app
-COPY . /usr/src/app
-RUN chown -R app:app .
+RUN apk add --no-cache \
+    build-base \
+    && apk add --no-cache --virtual build-deps \
+    jq~=1 \
+    && pip install flake8 \
+    && adduser -u 9000 -D app \
+    && VERSION="$(flake8 --version | sed 's/ .*$//' | head -n 1)" \
+    && jq --arg version "$VERSION" '.version = $version' > /engine.json < ./engine.json \
+    && rm ./engine.json \
+    && apk del build-deps
 
 USER app
 
 VOLUME /code
 WORKDIR /code
 
-CMD [ "/usr/src/app/codeclimate-flake8" ]
+CMD ["codeclimate-flake8"]
 
 ARG BUILD_DATE
 ARG REVISION
@@ -34,4 +38,17 @@ LABEL org.opencontainers.image.source="https://gitlab.com/megabyte-labs/dockerfi
 LABEL org.opencontainers.image.url="https://megabyte.space"
 LABEL org.opencontainers.image.vendor="Megabyte Labs"
 LABEL org.opencontainers.image.version=$VERSION
-LABEL space.megabyte.type="code-climate"
+LABEL space.megabyte.type="codeclimate"
+
+FROM codeclimate AS flake8
+
+WORKDIR /work
+
+USER root
+
+RUN rm /engine.json /usr/local/bin/codeclimate-flake8 /usr/local/bin/reporter.py
+
+ENTRYPOINT ["flake8"]
+CMD ["--version"]
+
+LABEL space.megabyte.type="linter"

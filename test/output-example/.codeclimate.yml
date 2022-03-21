@@ -1,4 +1,4 @@
+---
 engines:
   flake8:
     enabled: true
-    channel: "beta"
