@@ -1,7 +1,7 @@
 <!-- ⚠️ This README has been generated from the file(s) ".config/docs/blueprint-readme-codeclimate.md" ⚠️--><div align="center">
   <center>
     <a href="https://github.com/ProfessorManhattan/codeclimate-flake8">
-      <img width="148" height="148" alt="Ansible Lint logo" src="https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/-/raw/master/logo.png" />
+      <img width="148" height="148" alt="Flake8 logo" src="https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/-/raw/master/logo.png" />
     </a>
   </center>
 </div>
@@ -29,8 +29,8 @@
 </div>
 <br/>
 <div align="center">
-  <a title="Version: 5.4.0" href="https://github.com/ProfessorManhattan/codeclimate-flake8" target="_blank">
-    <img alt="Version: 5.4.0" src="https://img.shields.io/badge/version-5.4.0-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
+  <a title="Version: 4.0.1" href="https://github.com/ProfessorManhattan/codeclimate-flake8" target="_blank">
+    <img alt="Version: 4.0.1" src="https://img.shields.io/badge/version-4.0.1-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
   </a>
   <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/-/commits/master" target="_blank">
     <img alt="Build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/docker/codeclimate/flake8?branch=master&label=build&logo=gitlab&logoColor=white&style=flat-square">
@@ -138,9 +138,9 @@ There are several different ways you can use the Docker container provided by th
 docker run -it -v ${PWD}:/work -w /work --rm megabytelabs/flake8:latest --help
 ```
 
-This allows you to run Ansible Lint without installing it locally. It also removes the image from your system when you are done. This could be good for security since the application is within a container and also keeps your file system clean.
+This allows you to run Flake8 without installing it locally. It also removes the image from your system when you are done. This could be good for security since the application is within a container and also keeps your file system clean.
 
-You can also add a bash alias to your `~/.bashrc` file so that you can run the Ansible Lint command at any time. To do this, add the following snippet to your `~/.profile` file (or equivalent):
+You can also add a bash alias to your `~/.bashrc` file so that you can run the Flake8 command at any time. To do this, add the following snippet to your `~/.profile` file (or equivalent):
 
 ```shell
 flake8() {
@@ -205,7 +205,7 @@ include:
   - remote: https://gitlab.com/megabyte-labs/gitlab-ci/-/raw/master/lint/flake8.gitlab-ci.yml
 ```
 
-That is it! Ansible Lint will now run anytime you commit code (that matches the parameters laid out in the `remote:` file above). Ideally, for production, you should copy the source code from the `remote:` link above to another location and update the `remote:` link to the file's new location. That way, you do not have to worry about any changes that are made to the `remote:` file by our team.
+That is it! Flake8 will now run anytime you commit code (that matches the parameters laid out in the `remote:` file above). Ideally, for production, you should copy the source code from the `remote:` link above to another location and update the `remote:` link to the file's new location. That way, you do not have to worry about any changes that are made to the `remote:` file by our team.
 
 <a href="#configuring-flake8" style="width:100%"><img style="width:100%" src="https://gitlab.com/megabyte-labs/assets/-/raw/master/png/aqua-divider.png" /></a>
 

@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@megabytelabs/codeclimate-flake8",
-  "version": "5.4.0",
+  "version": "4.0.1",
   "description": "A Flake8 slim container and a CodeClimate engine container for GitLab CI",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
@@ -46,10 +46,8 @@
   "dependencies": {},
   "optionalDependencies": {},
   "devDependencies": {
-    "@commitlint/config-conventional": "latest",
     "eslint-config-strict-mode": "latest",
     "git-cz-emoji": "latest",
-    "handlebars-helpers": "latest",
     "prettier-config-sexy-mode": "latest",
     "semantic-release-config": "latest",
     "typescript": "^4.5.5"
@@ -83,11 +81,11 @@
     "description": "A Flake8 slim container and a CodeClimate engine container for GitLab CI",
     "dockerBaseTag": "flake8",
     "dockerSlimCommand": {
-      "ansible-lint": "--http-probe=false --exec 'flake8 . || true' --mount \"$PWD/tests/output-example:/work\" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8'",
-      "codeclimate": "--http-probe=false --exec 'codeclimate-flake8' --mount \"$PWD/tests/output-example:/work\" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8'"
+      "flake8": "--http-probe=false --exec 'flake8 . || true' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8'",
+      "codeclimate": "--http-probe=false --exec 'codeclimate-flake8' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8'"
     },
     "group": "docker",
-    "name": "Ansible Lint",
+    "name": "Flake8",
     "overview": "This project is the home of a **[Flake8](https://flake8.pycqa.org/en/latest/)** [CodeClimate](https://codeclimate.com/) engine. It was built to integrate Flake8 results into the GitLab merge request web UI. This project also generates a standalone, slim instance of Flake8 that you can use to quickly run Flake8 in a CI/CD pipeline.\n\nFlake8 is a wrapper around these tools:\n\n* [PyFlakes](https://pypi.org/project/pyflakes/)\n* [pycodestyle](https://github.com/PyCQA/pycodestyle)\n* [McCabe script](https://github.com/PyCQA/mccabe)\n\nFlake8 is also extendable with plugins. You can find a wealth of Flake8 plugins on the [Awesome Flake8 page on GitHub](https://github.com/DmytroLitvinov/awesome-flake8-extensions).",
     "repository": {
       "github": "https://github.com/ProfessorManhattan/codeclimate-flake8",
@@ -99,7 +97,15 @@
     "versionCommand": "docker run -it megabytelabs/flake8:latest --version | sed 's/ .*$//' | head -n 1",
     "github_id": "R_kgDOHCeF7g",
     "gitlab_project_id": "32219697",
-    "gitlab_group_id": "14556970"
+    "gitlab_group_id": "14556970",
+    "dockerSlimSize": {
+      "codeclimate": "5.0M",
+      "flake8": "5.0M"
+    },
+    "dockerLatestSize": {
+      "codeclimate": "39M",
+      "flake8": "39M"
+    }
   },
   "changelog": {
     "displayTypes": [
@@ -112,9 +118,7 @@
     "showAuthor": true
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
+    "extends": [],
     "helpUrl": "https://megabyte.space/docs/contributing/commits"
   },
   "engine": "node >= 0.12.4",

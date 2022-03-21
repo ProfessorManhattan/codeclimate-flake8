@@ -9,6 +9,7 @@ from flake8.main import application
 from flake8.options.config import LocalPlugins
 
 CONFIG_FILE_LOCATION = "/config.json"
+# TODO This needs to be able to read .config/flake8.toml
 
 if os.path.exists(CONFIG_FILE_LOCATION):
     contents = open(CONFIG_FILE_LOCATION).read()
