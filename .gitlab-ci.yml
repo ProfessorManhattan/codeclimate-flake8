@@ -27,7 +27,7 @@ integration:standalone:
     name: megabytelabs/flake8:slim
     entrypoint: ['']
   script:
-    - flake8 -c .config/flake8.toml .
+    - flake8 --version
 integration:codeclimate:
   image: megabytelabs/codeclimate:slim
   script:
