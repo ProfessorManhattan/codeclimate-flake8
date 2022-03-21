@@ -9,7 +9,6 @@ variables:
 cache:
   key: '${CI_JOB_NAME}'
   paths:
-    - node_modules
     - .cache/pip
     - .pnpm-store
     - .venv

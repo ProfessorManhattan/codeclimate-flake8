@@ -30,8 +30,8 @@ ARG VERSION
 LABEL maintainer="Megabyte Labs <help@megabyte.space>"
 LABEL org.opencontainers.image.authors="Brian Zalewski <brian@megabyte.space>"
 LABEL org.opencontainers.image.created=$BUILD_DATE
-LABEL org.opencontainers.image.description="Code climate engine for flake8"
-LABEL org.opencontainers.image.documentation="https://gitlab.com/megabyte-labs/dockerfile/codeclimate/flake8/-/blob/master/README.md"
+LABEL org.opencontainers.image.description="A Flake8 slim container and a CodeClimate engine container for GitLab CI"
+LABEL org.opencontainers.image.documentation="https://github.com/ProfessorManhattan/codeclimate-flake8/blob/master/README.md"
 LABEL org.opencontainers.image.licenses="MIT"
 LABEL org.opencontainers.image.revision=$REVISION
 LABEL org.opencontainers.image.source="https://gitlab.com/megabyte-labs/dockerfile/codeclimate/flake8.git"

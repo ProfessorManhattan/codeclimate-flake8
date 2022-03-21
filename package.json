@@ -1,18 +1,18 @@
 {
   "private": false,
-  "name": "@megabytelabs/codeclimate-ansible-lint",
+  "name": "@megabytelabs/codeclimate-flake8",
   "version": "5.4.0",
-  "description": "An Ansible Lint slim container and a CodeClimate engine container for GitLab CI",
+  "description": "A Flake8 slim container and a CodeClimate engine container for GitLab CI",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
   "homepage": "https://megabyte.space",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProfessorManhattan/codeclimate-ansible-lint.git"
+    "url": "git+https://github.com/ProfessorManhattan/codeclimate-flake8.git"
   },
   "bugs": {
     "email": "help@megabyte.space",
-    "url": "https://gitlab.com/megabyte-labs/docker/codeclimate/ansible-lint/-/issues"
+    "url": "https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/-/issues"
   },
   "type": "commonjs",
   "main": "dist/main.js",
