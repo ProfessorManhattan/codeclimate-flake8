@@ -4,7 +4,8 @@ import glob
 import json
 import os.path
 import sys
-import yaml
+import toml
+import re
 from flake8.main import application
 from flake8.options.config import LocalPlugins
 
@@ -12,13 +13,21 @@ CONFIG_FILE_LOCATION = "/config.json"
 # TODO This needs to be able to read .config/flake8.toml
 
 
-with open(r'/work/.codeclimate.yml') as file:
-    doc = yaml.safe_load(file)
+json_file = "/config.json"
+output_file = "/work/flake8_config.toml"
 
-    config_file=doc['engines']['flake8']['config']['config']
+with open(json_file) as source:
+    config = json.loads(source.read())
 
+toml_config = toml.dumps(config)
 
-print(config_file)
+with open(output_file, 'w') as target:
+    target.write(toml_config)
+
+data = toml_config
+toml_config = data.replace('"', "")
+
+print(toml_config)
 
 
 
@@ -35,9 +44,9 @@ if additional_python_path:
     sys.path.extend(map(lambda x: os.path.abspath(x), additional_python_path))
 
 include_paths = config.get('include_paths', ['./'])
-config_arg = "--config=" + config_file
+config_arg = "--config=" + toml_config
 print(config_arg)
-parameters = [ "--config=" + config_file ]
+parameters = [ "--config=" + toml_config ]
 for path in include_paths:
     if os.path.isdir(path):
         parameters += glob.glob(path + "*/**/*.py", recursive=True)
