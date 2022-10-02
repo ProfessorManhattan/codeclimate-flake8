@@ -116,7 +116,7 @@
     "slug": "flake8",
     "subgroup": "codeclimate",
     "title": "Flake8 CodeClimate Engine",
-    "versionCommand": "docker run -it megabytelabs/flake8:latest --version | sed 's/ .*$//' | head -n 1"
+    "versionCommand": "docker run -it megabytelabs/flake8:latest --version"
   },
   "changelog": {
     "displayTypes": [
