@@ -21,13 +21,13 @@
   },
   "source_image": {
     "identity": {
-      "id": "sha256:52efe98034a716fd400708aa077bb95d13316ef8bf2e74c04c2b26f3b407f529",
+      "id": "sha256:4ff82d50edf40852f5aebc9c2d5d4eda6cef947a956de0712a320a7c6b54352d",
       "tags": ["latest"],
       "names": ["megabytelabs/flake8:latest"]
     },
-    "size": 136827937,
+    "size": 136842116,
     "size_human": "137 MB",
-    "create_time": "2022-10-02T07:49:34Z",
+    "create_time": "2022-10-02T09:48:40Z",
     "docker_version": "",
     "architecture": "amd64",
     "user": "root",
@@ -35,15 +35,15 @@
     "labels": {
       "maintainer": "Megabyte Labs <help@megabyte.space>",
       "org.opencontainers.image.authors": "Brian Zalewski <brian@megabyte.space>",
-      "org.opencontainers.image.created": "2022-10-02T03:45:27-04:00",
+      "org.opencontainers.image.created": "2022-10-02T03:52:02-04:00",
       "org.opencontainers.image.description": "A slim Flake8 and a CodeClimate engine container for GitLab CI",
       "org.opencontainers.image.documentation": "https://github.com/megabyte-labs/codeclimate-flake8/blob/master/README.md",
       "org.opencontainers.image.licenses": "MIT",
-      "org.opencontainers.image.revision": "498d2c691b3b7cdff335cbd9dfb87f3306a4a04f",
+      "org.opencontainers.image.revision": "b07416ed4ccf9217ad61da24010af55d81374a94",
       "org.opencontainers.image.source": "https://github.com/megabyte-labs/codeclimate-flake8.git",
       "org.opencontainers.image.url": "https://megabyte.space",
       "org.opencontainers.image.vendor": "Megabyte Labs",
-      "org.opencontainers.image.version": "",
+      "org.opencontainers.image.version": "5.0.4",
       "space.megabyte.type": "linter"
     },
     "env_vars": [
@@ -60,25 +60,25 @@
       "exe_path": ""
     }
   },
-  "minified_image_size": 13849416,
+  "minified_image_size": 13583509,
   "minified_image_size_human": "14 MB",
   "minified_image": "megabytelabs/flake8:slim",
   "minified_image_has_data": true,
-  "minified_by": 9.879690017254157,
-  "artifact_location": "/tmp/docker-slim-state/.docker-slim-state/images/52efe98034a716fd400708aa077bb95d13316ef8bf2e74c04c2b26f3b407f529/artifacts",
+  "minified_by": 10.0741359246716,
+  "artifact_location": "/tmp/docker-slim-state/.docker-slim-state/images/4ff82d50edf40852f5aebc9c2d5d4eda6cef947a956de0712a320a7c6b54352d/artifacts",
   "container_report_name": "creport.json",
   "seccomp_profile_name": "megabytelabs-flake8-seccomp.json",
   "apparmor_profile_name": "megabytelabs-flake8-apparmor-profile",
   "image_stack": [
     {
       "is_top_image": true,
-      "id": "sha256:52efe98034a716fd400708aa077bb95d13316ef8bf2e74c04c2b26f3b407f529",
+      "id": "sha256:4ff82d50edf40852f5aebc9c2d5d4eda6cef947a956de0712a320a7c6b54352d",
       "full_name": "megabytelabs/flake8:latest",
       "repo_name": "megabytelabs/flake8",
       "version_tag": "latest",
       "raw_tags": ["megabytelabs/flake8:latest"],
-      "create_time": "2022-10-02T07:49:34Z",
-      "new_size": 136827937,
+      "create_time": "2022-10-02T09:48:40Z",
+      "new_size": 136842116,
       "new_size_human": "137 MB",
       "instructions": [
         {
@@ -350,8 +350,8 @@
           "layer_index": 0,
           "size": 0,
           "command_snippet": "RUN [\"LABEL\",\"org.opencontainers.image.creat...",
-          "command_all": "RUN [\"LABEL\",\"org.opencontainers.image.created=2022-10-02T03:45:27-04:00\"]",
-          "system_commands": ["[\"LABEL\",\"org.opencontainers.image.created=2022-10-02T03:45:27-04:00\"]"],
+          "command_all": "RUN [\"LABEL\",\"org.opencontainers.image.created=2022-10-02T03:52:02-04:00\"]",
+          "system_commands": ["[\"LABEL\",\"org.opencontainers.image.created=2022-10-02T03:52:02-04:00\"]"],
           "comment": "buildkit.dockerfile.v0"
         },
         {
@@ -406,9 +406,9 @@
           "layer_index": 0,
           "size": 0,
           "command_snippet": "RUN [\"LABEL\",\"org.opencontainers.image.revis...",
-          "command_all": "RUN [\"LABEL\",\"org.opencontainers.image.revision=498d2c691b3b7cdff335cbd9dfb87f3306a4a04f\"]",
+          "command_all": "RUN [\"LABEL\",\"org.opencontainers.image.revision=b07416ed4ccf9217ad61da24010af55d81374a94\"]",
           "system_commands": [
-            "[\"LABEL\",\"org.opencontainers.image.revision=498d2c691b3b7cdff335cbd9dfb87f3306a4a04f\"]"
+            "[\"LABEL\",\"org.opencontainers.image.revision=b07416ed4ccf9217ad61da24010af55d81374a94\"]"
           ],
           "comment": "buildkit.dockerfile.v0"
         },
@@ -462,8 +462,8 @@
           "layer_index": 0,
           "size": 0,
           "command_snippet": "RUN [\"LABEL\",\"org.opencontainers.image.versi...",
-          "command_all": "RUN [\"LABEL\",\"org.opencontainers.image.version=\"]",
-          "system_commands": ["[\"LABEL\",\"org.opencontainers.image.version=\"]"],
+          "command_all": "RUN [\"LABEL\",\"org.opencontainers.image.version=5.0.4\"]",
+          "system_commands": ["[\"LABEL\",\"org.opencontainers.image.version=5.0.4\"]"],
           "comment": "buildkit.dockerfile.v0"
         },
         {
@@ -507,12 +507,12 @@
         },
         {
           "type": "RUN",
-          "time": "2022-10-02T07:49:34Z",
+          "time": "2022-10-02T09:48:40Z",
           "is_nop": false,
           "is_exec_form": true,
           "local_image_exists": false,
           "layer_index": 0,
-          "size": 88089999,
+          "size": 88104178,
           "size_human": "88 MB",
           "command_snippet": "RUN [\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--no-...",
           "command_all": "RUN [\"RUN\",\"/bin/sh\",\"-c\",\"apk\",\"add\",\"--no-cache\",\"python3~=3\",\"py3-pip~=22\",\"&&\",\"pip3\",\"install\",\"flake8\",\"flake8-builtins\",\"flake8-pytest-style\",\"flake8-simplify\",\"wemake-python-styleguide\"]",
@@ -524,7 +524,7 @@
         },
         {
           "type": "RUN",
-          "time": "2022-10-02T07:49:34Z",
+          "time": "2022-10-02T09:48:40Z",
           "is_nop": false,
           "is_exec_form": true,
           "local_image_exists": false,
@@ -537,7 +537,7 @@
         },
         {
           "type": "RUN",
-          "time": "2022-10-02T07:49:34Z",
+          "time": "2022-10-02T09:48:40Z",
           "is_nop": false,
           "is_exec_form": true,
           "local_image_exists": false,
@@ -550,7 +550,7 @@
         },
         {
           "type": "RUN",
-          "time": "2022-10-02T07:49:34Z",
+          "time": "2022-10-02T09:48:40Z",
           "is_last_instruction": true,
           "is_nop": false,
           "is_exec_form": true,
