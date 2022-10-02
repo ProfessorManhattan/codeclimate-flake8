@@ -96,7 +96,7 @@
       "flake8": "49M"
     },
     "dockerSlimCommand": {
-      "codeclimate": "--http-probe=false --exec 'jq --version && curl --version && bash --version && python3 --version && flake8 --version && codeclimate-flake8' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --include-bin /bin/bash",
+      "codeclimate": "--http-probe=false --exec 'curl --version && python3 --version && flake8 --version && codeclimate-flake8' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --include-bin /bin/bash",
       "flake8": "--http-probe=false --exec 'flake8 . || true' --mount \"$PWD/test/output-example:/work\""
     },
     "dockerSlimSize": {
