@@ -28,10 +28,9 @@ RUN chmod +x /usr/local/bin/codeclimate-flake8 \
   && apk add --no-cache \
   bash~=5 \
   curl~=7 \
+  jq~=1 \
   python3~=3 \
   py3-pip~=22 \
-  && apk add --no-cache --virtual build-deps \
-  jq~=1 \
   && pip3 install \
   flake8==4.* \
   flake8-builtins==1.* \
@@ -42,8 +41,7 @@ RUN chmod +x /usr/local/bin/codeclimate-flake8 \
   && adduser -u 9000 -D app \
   && VERSION="$(flake8 --version | sed 's/ .*$//' | head -n 1)" \
   && jq --arg version "$VERSION" '.version = $version' > /engine.json < ./engine.json \
-  && rm ./engine.json \
-  && apk del build-deps
+  && rm ./engine.json
 
 USER app
 
