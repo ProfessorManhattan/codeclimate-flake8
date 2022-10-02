@@ -15,6 +15,19 @@ Grab this version by running:
 docker pull megabytelabs/flake8:5.0.4
 ```
 
+## [1.0.2](https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/compare/v1.0.1...v1.0.2) (2022-10-02)
+
+
+
+
+
+Grab this version by running:
+
+
+```shell
+docker pull megabytelabs/flake8:5.0.4
+```
+
 ## [1.0.1](https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/compare/v1.0.0...v1.0.1) (2022-10-02)
 
 
