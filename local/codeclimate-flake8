@@ -1,8 +1,12 @@
 #!/bin/bash
 
 if [ -f .config/flake8.toml ]; then
-  flake8 --format gl-codeclimate --exit-zero --config .config/flake8.toml | jq -c -r '.[]'
+  flake8 --format gl-codeclimate --exit-zero --config .config/flake8.toml | jq -c -r '.[]' | while read INPUT; do
+    echo "$INPUT"
+  done
 else
   curl -sSL https://gitlab.com/megabyte-labs/common/python/-/raw/master/project/.config/flake8.toml > /tmp/flake8.toml
-  flake8 --format gl-codeclimate --exit-zero --config /tmp/flake8.toml | jq -c -r '.[]'
+  flake8 --format gl-codeclimate --exit-zero --config /tmp/flake8.toml | jq -c -r '.[]' | while read INPUT; do
+    echo "$INPUT"
+  done
 fi
