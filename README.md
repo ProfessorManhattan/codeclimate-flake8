@@ -32,8 +32,8 @@
 </div>
 <br/>
 <div align="center">
-  <a title="Version: pkg.version" href="https://github.com/megabyte-labs/codeclimate-flake8" target="_blank">
-    <img alt="Version: pkg.version" src="https://img.shields.io/badge/version-pkg.version-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
+  <a title="Version: 5.0.4" href="https://github.com/megabyte-labs/codeclimate-flake8" target="_blank">
+    <img alt="Version: 5.0.4" src="https://img.shields.io/badge/version-5.0.4-blue.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAACNJREFUCNdjIACY//+BEp9hhM3hAzYQwoBIAqEDYQrCZLwAAGlFKxU1nF9cAAAAAElFTkSuQmCC&cacheSeconds=2592000&style=flat-square" />
   </a>
   <a title="GitLab build status" href="https://gitlab.com/megabyte-labs/docker/codeclimate/flake8/-/commits/master" target="_blank">
     <img alt="Build status" src="https://img.shields.io/gitlab/pipeline-status/megabyte-labs/docker/codeclimate/flake8?branch=master&label=build&logo=gitlab&logoColor=white&style=flat-square">
