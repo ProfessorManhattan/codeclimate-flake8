@@ -100,7 +100,7 @@
       "flake8": "--http-probe=false --exec 'flake8 . || true' --mount \"$PWD/test/output-example:/work\""
     },
     "dockerSlimSize": {
-      "codeclimate": "11M",
+      "codeclimate": "12M",
       "flake8": "5.3M"
     },
     "github_id": "R_kgDOHCeF7g",
