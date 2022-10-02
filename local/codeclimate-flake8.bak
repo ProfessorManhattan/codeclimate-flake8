@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+import glob
+import json
+import os.path
+import sys
+import toml
+import re
+from flake8.main import application
+# from flake8.options.config import LocalPlugins
+
+CONFIG_FILE_LOCATION = "/config.json"
+
+# Read the /config.json file
+if os.path.exists(CONFIG_FILE_LOCATION):
+    contents = open(CONFIG_FILE_LOCATION).read()
+    config = json.loads(contents)
+else:
+    config = {}
+
+# Populate variables with values from the /config.json file
+include_paths = config.get('include_paths', ['./'])
+parameters = []
+print(config)
+if config in config:
+  parameters.append("--config " + config.config)
+
+# Calculate the paths to run flake8 on by cycling through the include_paths
+for path in include_paths:
+    if os.path.isdir(path):
+        parameters += glob.glob(path + "**/*.py", recursive=True)
+    elif path.endswith('.py'):
+        parameters.append(path)
+
+# Run flake8 via the API
+app = application.Application()
+# app.local_plugins = LocalPlugins(extension=[], report=['codeclimate = reporter:JSONFormatter'], paths=['.'])
+app.run(parameters)

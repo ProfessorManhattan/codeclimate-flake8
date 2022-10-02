@@ -1,58 +1,8 @@
-#!/usr/bin/env python
+#!/bin/bash
 
-import glob
-import json
-import os.path
-import sys
-import toml
-import re
-from flake8.main import application
-from flake8.options.config import LocalPlugins
-
-CONFIG_FILE_LOCATION = "/config.json"
-# TODO This needs to be able to read .config/flake8.toml
-
-
-json_file = "/config.json"
-output_file = "/work/flake8_config.toml"
-
-with open(json_file) as source:
-    config = json.loads(source.read())
-
-toml_config = toml.dumps(config)
-
-with open(output_file, 'w') as target:
-    target.write(toml_config)
-
-data = toml_config
-toml_config = data.replace('"', "")
-
-print(toml_config)
-
-
-
-if os.path.exists(CONFIG_FILE_LOCATION):
-    contents = open(CONFIG_FILE_LOCATION).read()
-    config = json.loads(contents)
-else:
-    config = {}
-
-additional_python_path = config.get('PYTHONPATH', [])
-if isinstance(additional_python_path, str):
-    additional_python_path = [additional_python_path]
-if additional_python_path:
-    sys.path.extend(map(lambda x: os.path.abspath(x), additional_python_path))
-
-include_paths = config.get('include_paths', ['./'])
-config_arg = "--config=" + toml_config
-print(config_arg)
-parameters = [ "--config=" + toml_config ]
-for path in include_paths:
-    if os.path.isdir(path):
-        parameters += glob.glob(path + "*/**/*.py", recursive=True)
-    elif path.endswith('.py'):
-        parameters.append(path)
-
-app = application.Application()
-app.local_plugins = LocalPlugins(extension=[], report=['codeclimate = reporter:JSONFormatter'], paths=['.'])
-app.run(parameters)
+if [ -f .config/flake8.toml ]; then
+  flake8 --format gl-codeclimate --exit-zero --config .config/flake8.toml
+else
+  curl -sSL https://gitlab.com/megabyte-labs/common/python/-/raw/master/project/.config/flake8.toml > /tmp/flake8.toml
+  flake8 --format gl-codeclimate --exit-zero --config /tmp/flake8.toml
+fi

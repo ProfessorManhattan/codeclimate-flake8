@@ -1,29 +1,4 @@
-FROM python:alpine AS codeclimate
-
-WORKDIR /work
-
-COPY local/codeclimate-flake8 local/reporter.py /usr/local/bin/
-COPY local/engine.json ./engine.json
-
-RUN apk add --no-cache \
-  python3~=3 \
-  py3-pip~=20 \
-  && apk add --no-cache --virtual build-deps \
-  jq~=1 \
-  && pip3 install \
-  flake8 \
-  && adduser -u 9000 -D app \
-  && VERSION="$(flake8 --version | sed 's/ .*$//' | head -n 1)" \
-  && jq --arg version "$VERSION" '.version = $version' > /engine.json < ./engine.json \
-  && rm ./engine.json \
-  && apk del build-deps
-
-USER app
-
-VOLUME /code
-WORKDIR /code
-
-CMD ["codeclimate-flake8"]
+FROM python:alpine AS codeclimate-build
 
 ARG BUILD_DATE
 ARG REVISION
@@ -42,13 +17,56 @@ LABEL org.opencontainers.image.vendor="Megabyte Labs"
 LABEL org.opencontainers.image.version=$VERSION
 LABEL space.megabyte.type="codeclimate"
 
-FROM codeclimate AS flake8
+FROM codeclimate-build AS codeclimate
+
+WORKDIR /work
+
+COPY local/codeclimate-flake8 /usr/local/bin/
+COPY local/engine.json ./engine.json
+
+RUN chmod +x /usr/local/bin/codeclimate-flake8 \
+  && apk add --no-cache \
+  bash~=5 \
+  curl~=7 \
+  python3~=3 \
+  py3-pip~=22 \
+  && apk add --no-cache --virtual build-deps \
+  jq~=1 \
+  && pip3 install \
+  flake8==4.* \
+  flake8-builtins==1.* \
+  flake8-gl-codeclimate==0.* \
+  flake8-pytest-style==1.* \
+  flake8-simplify==0.* \
+  wemake-python-styleguide==0.* \
+  && adduser -u 9000 -D app \
+  && VERSION="$(flake8 --version | sed 's/ .*$//' | head -n 1)" \
+  && jq --arg version "$VERSION" '.version = $version' > /engine.json < ./engine.json \
+  && rm ./engine.json \
+  && apk del build-deps
+
+USER app
+
+VOLUME /code
+WORKDIR /code
+
+CMD ["codeclimate-flake8"]
+
+FROM codeclimate-build AS flake8
 
 WORKDIR /work
 
 USER root
 
-RUN rm /engine.json /usr/local/bin/codeclimate-flake8 /usr/local/bin/reporter.py
+RUN apk add --no-cache \
+  python3~=3 \
+  py3-pip~=22 \
+  && pip3 install \
+  flake8 \
+  flake8-builtins \
+  flake8-pytest-style \
+  flake8-simplify \
+  wemake-python-styleguide
 
 ENTRYPOINT ["flake8"]
 CMD ["--version"]

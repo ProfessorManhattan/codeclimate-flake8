@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@megabytelabs/codeclimate-flake8",
-  "version": "4.0.1",
+  "version": "5.0.4",
   "description": "A slim Flake8 and a CodeClimate engine container for GitLab CI",
   "license": "MIT",
   "author": "Brian Zalewski <brian@megabyte.space> (https://megabyte.space)",
@@ -92,16 +92,16 @@
     "description": "A slim Flake8 and a CodeClimate engine container for GitLab CI",
     "dockerBaseTag": "flake8",
     "dockerLatestSize": {
-      "codeclimate": "39M",
-      "flake8": "39M"
+      "codeclimate": "55M",
+      "flake8": "49M"
     },
     "dockerSlimCommand": {
-      "codeclimate": "--http-probe=false --exec 'codeclimate-flake8' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8'",
-      "flake8": "--http-probe=false --exec 'flake8 . || true' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --preserve-path '/usr/lib/python3.9/site-packages/flake8'"
+      "codeclimate": "--http-probe=false --exec 'curl --version && bash --version && python3 --version && flake8 --version && codeclimate-flake8' --mount \"$PWD/test/output-example:/work\" --workdir '/work' --include-bin /bin/bash",
+      "flake8": "--http-probe=false --exec 'flake8 . || true' --mount \"$PWD/test/output-example:/work\""
     },
     "dockerSlimSize": {
-      "codeclimate": "5.0M",
-      "flake8": "5.0M"
+      "codeclimate": "11M",
+      "flake8": "5.3M"
     },
     "github_id": "R_kgDOHCeF7g",
     "gitlab_group_id": "14556970",
